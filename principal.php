@@ -9,7 +9,7 @@ if (!isset($_SESSION['email'])) {
 ?>
     <div class="flex-grow-1">
         <!-- Conteúdo da página vai aqui -->
-        <h2>Olá mundo, <?php echo htmlspecialchars($nome); ?>!</h2>
+        <h2>Olá , <?php echo htmlspecialchars($nome); ?>!</h2>
     </div>
 
 
