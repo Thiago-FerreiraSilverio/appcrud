@@ -81,7 +81,7 @@ if (isset($_GET['edit'])) {
             <div class="col-12 text-center">
                 <button type="submit" name="save" class="btn btn-success">Salvar</button>
                 <button type="submit" name="update" class="btn btn-secondary">Atualizar</button>
-                <button type="button" onclick="clearForm()" class="btn btn-primary">Novo</button>
+                <button type="button" onclick="clearForm()" class="btn btn-primary">Limpar</button>
             </div>
         </form>
 
