@@ -15,6 +15,7 @@
         <div class="container">
             <a class="navbar-brand" href="principal.php">Home</a>
             <a class="navbar-brand" href="usuarios_cadastro.php">Usuários</a>
+            <a class="navbar-brand" href="produtos_cadastro.php">Produtos</a>
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">

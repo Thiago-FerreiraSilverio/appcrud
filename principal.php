@@ -1,16 +1,41 @@
-<?php include 'principal_controller.php'; ?>
-<?php include 'header.php'; ?>
 <?php
-// Verifica se o usuário está registrado na sessão (logado)
-if (!isset($_SESSION['email'])) {
-    header("Location: index.php");
-    exit();
-}
+include 'produtos_controller.php'; // Certifique-se de ajustar o caminho corretamente
+include 'header.php';
+
+// Obtém os produtos para exibição
+$products = getProducts();
 ?>
-    <div class="flex-grow-1">
-        <!-- Conteúdo da página vai aqui -->
-        <h2>Olá , <?php echo htmlspecialchars($nome); ?>!</h2>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Produtos Disponíveis</h1>
+    <div class="row">
+        <?php foreach ($products as $product): ?>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="<?php echo $product['url_img']; ?>" class="card-img-top" alt="<?php echo $product['nome']; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $product['nome']; ?></h5>
+                        <p class="card-text"><?php echo $product['descricao']; ?></p>
+                        <p class="card-text"><strong>Marca:</strong> <?php echo $product['marca']; ?></p>
+                        <p class="card-text"><strong>Modelo:</strong> <?php echo $product['modelo']; ?></p>
+                        <p class="card-text"><strong>Preço:</strong> R$ <?php echo number_format($product['valorunitario'], 2, ',', '.'); ?></p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
-
-
+</div>
 <?php include 'footer.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
