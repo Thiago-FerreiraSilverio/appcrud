@@ -21,14 +21,18 @@ $products = getProducts();
         <?php foreach ($products as $product): ?>
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="<?php echo $product['url_img']; ?>" class="card-img-top" alt="<?php echo $product['nome']; ?>">
+                    <div class="img-card" style="width:100%; height:250px; object-fit:cover; border-radius:5px;">
+                        <img style="width:100%; height:250px; object-fit:contain; border-radius:5px;" src="<?php echo $product['url_img']; ?>" class="card-img-top" alt="<?php echo $product['nome']; ?>">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $product['nome']; ?></h5>
                         <p class="card-text"><?php echo $product['descricao']; ?></p>
                         <p class="card-text"><strong>Marca:</strong> <?php echo $product['marca']; ?></p>
                         <p class="card-text"><strong>Modelo:</strong> <?php echo $product['modelo']; ?></p>
                         <p class="card-text"><strong>Preço:</strong> R$ <?php echo number_format($product['valorunitario'], 2, ',', '.'); ?></p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <td class="acoes">
+                        <a href="carrinho.php?add=<?php echo $product['id']; ?>" class="btn btn-primary">Comprar</a>
+                        </td>
                     </div>
                 </div>
             </div>
