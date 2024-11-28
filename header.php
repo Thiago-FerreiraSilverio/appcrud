@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <form method="POST" action="">
+                        <form method="POST" action="index.php">
                             <a class="btn btn-link nav-link float-left" href="shopcart.php"><i class="bi bi-cart text-white"></i></a>
                             <button class="btn btn-link nav-link text-white" name="logout" type="submit">Logout</button>
                         </form>

@@ -7,6 +7,7 @@ include 'shopcart_controller.php';
 $nome = $_SESSION['nome'];
 $email = $_SESSION['email'];
 
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
@@ -18,7 +19,7 @@ function salvarPedido($carrinho, $total) {
     global $conn;
     
     // Pega o ID do usuário que está na sessão
-    $id_usuario = null;  // Pegando o ID do usuário que está na sessão
+    $id_usuario = $_SESSION['id'];  // Pegando o ID do usuário que está na sessão
     $data_pedido = date('Y-m-d H:i:s');
 
     // Tenta inserir o pedido no banco
