@@ -1,45 +1,33 @@
-<?php
-include 'produtos_controller.php'; // Certifique-se de ajustar o caminho corretamente
-include 'header.php';
+<?php 
+include 'principal_controller.php'; 
 
-// Obtém os produtos para exibição
-$products = getProducts();
+// Pega todos os produtos para preencher os dados da tabela 
+$produtos = getProdutos();
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<div class="container mt-5">
-    <h1 class="text-center">Produtos Disponíveis</h1>
-    <div class="row">
-        <?php foreach ($products as $product): ?>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="img-card" style="width:100%; height:250px; object-fit:cover; border-radius:5px;">
-                        <img style="width:100%; height:250px; object-fit:contain; border-radius:5px;" src="<?php echo $product['url_img']; ?>" class="card-img-top" alt="<?php echo $product['nome']; ?>">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $product['nome']; ?></h5>
-                        <p class="card-text"><?php echo $product['descricao']; ?></p>
-                        <p class="card-text"><strong>Marca:</strong> <?php echo $product['marca']; ?></p>
-                        <p class="card-text"><strong>Modelo:</strong> <?php echo $product['modelo']; ?></p>
-                        <p class="card-text"><strong>Preço:</strong> R$ <?php echo number_format($product['valorunitario'], 2, ',', '.'); ?></p>
-                        <td class="acoes">
-                        <a href="carrinho.php?add=<?php echo $product['id']; ?>" class="btn btn-primary">Comprar</a>
-                        </td>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
+<?php include 'header.php'; ?>
+
+<div class="container">
+    <div class="flex-grow-1">
+        <!-- Seu conteúdo adicional pode ser inserido aqui -->
     </div>
 </div>
+<div class="container p-2">
+    <?php foreach ($produtos as $produto): ?>    
+        <div class="card float-left" style="width: 18rem;">
+            <img src="<?php echo $produto['url_img']; ?>" class="rounded mx-auto d-block" alt="Imagem do Produto" style="width: 100px;">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
+                <p class="card-text"><?php echo $produto['descricao']; ?></p>
+                <p><strong>Preço:</strong> R$ <?php echo number_format($produto['valorunitario'], 2, ',', '.'); ?></p>
+                <!-- Formulário para adicionar ao carrinho -->
+                <form method="POST" action="principal.php">
+                    <input type="hidden" name="id_produto" value="<?php echo $produto['id']; ?>">
+                    <button type="submit" name="adicionar_produto" class="btn btn-primary btn-block">Comprar</button>
+                </form>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
 <?php include 'footer.php'; ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
